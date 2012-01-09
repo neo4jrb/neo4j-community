@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Dmytrii Nagirniak"]
   s.email       = ["dnagir@gmail.com"]
   s.homepage    = ""
-  s.summary     = %q{TODO: Write a gem summary}
-  s.description = %q{TODO: Write a gem description}
+  s.summary     = %q{The JAR Files downloaded from neo4j.org}
+  s.description = %q{The JAR Files downloaded form neo4j.org, check the license}
 
   s.rubyforge_project = "neo4j-community"
 
