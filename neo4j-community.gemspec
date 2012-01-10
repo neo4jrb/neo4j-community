@@ -18,7 +18,6 @@ Gem::Specification.new do |s|
   s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
 
-  raise Gem::Platform::Java
   s.platform      = 'java'
 
   # specify any dependencies here; for example:
