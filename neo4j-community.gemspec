@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com"]
   s.homepage    = "https://github.com/dnagir/neo4j-community"
   s.summary     = "The neo4j Community edition v#{Neo4j::Community::NEO_VERSION} JAR files"
-  s.description = s.summary
+  s.description = "The Java Jar files for the Neo4j Community, a high performance, fully ACID transactional graph database – licensed under the GPL, see license - http://neo4j.org/licensing-guide/ "
 
   s.rubyforge_project = "neo4j-community"
 
