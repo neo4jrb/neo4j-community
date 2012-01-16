@@ -5,7 +5,7 @@ module Neo4j
   module Community
 
     def self.jars_root
-      "#{File.dirname(__FILE__)}/neo4j-community/jars"
+      File.join("#{File.dirname(__FILE__)}", "neo4j-community", "jars")
     end
 
     def self.load_jars!
