@@ -1,0 +1,11 @@
+module Neo4j
+  module Community
+<<<<<<< HEAD
+    VERSION = "1.6.0.alpha.6"
+=======
+    VERSION = "1.6.0.alpha.8"
+>>>>>>> 28f4f245b730b1c3986c7ab149164769118dcf31
+    NEO_VERSION = "1.6.M02"
+  end
+end
+

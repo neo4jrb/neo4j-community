@@ -27,6 +27,8 @@ end
 desc "Upgrade using downloaded ...tar.gz file in ./tmp"
 task :upgrade => [:delete_old_jar] do
   system "cd tmp; tar xf #{source_file}"
-  root = File.expand_path("./lib/neo4j-community/jars")
-  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{root}"}
+  jars = File.expand_path("./lib/neo4j-community/jars")
+  test_jars = File.expand_path("./lib/neo4j-community/test-jars")
+  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{jars}" unless f =~ /tests/}
+  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{test_jars}" if f =~ /tests/}
 end

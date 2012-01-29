@@ -8,9 +8,18 @@ module Neo4j
       File.join("#{File.dirname(__FILE__)}", "neo4j-community", "jars")
     end
 
+    def self.test_jars_root
+      File.join("#{File.dirname(__FILE__)}", "neo4j-community", "test-jars")
+    end
+
     def self.load_jars!
       require 'java'
       Dir["#{jars_root}/*.jar"].each {|jar| require jar }
+    end
+
+    def self.load_test_jars!
+      require 'java'
+      Dir["#{test_jars_root}/*.jar"].each {|jar| require jar }
     end
 
     # This can be used by dependent gems to verify the Database versions have no mismatch.
