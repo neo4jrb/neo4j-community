@@ -25,6 +25,22 @@ def jar_files_to_copy
   Dir.new(unpack_lib_dir).entries.find_all {|x| x =~ /\.jar/}
 end
 
+def system_unpack_lib_dir
+  dir = tar_file.gsub('-unix.tar.gz', '')
+  dir = dir.gsub('-unix.tar', '')
+  File.expand_path("./tmp/#{dir}/system/lib")
+end
+
+def system_jars
+  Dir.new(system_unpack_lib_dir).entries.find_all {|x| x =~ /concurrentlinkedhashmap-lru/}
+end
+
+desc "List System Jars"
+task :list do
+  puts system_jars.inspect
+end
+
+ 
 desc "Delete old Jar files"
 task :delete_old_jar do
   root = File.expand_path("./lib/neo4j-community/jars")
@@ -42,5 +58,6 @@ task :upgrade => [:delete_old_jar] do
   FileUtils.mkdir_p(jars)
   test_jars = File.expand_path("./lib/neo4j-community/test-jars")
   jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
+  system_jars.each {|f| system "cp #{system_unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
   jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{test_jars}" if f =~ /tests/}
 end
