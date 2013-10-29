@@ -22,7 +22,7 @@ def unpack_lib_dir
 end
 
 def jar_files_to_copy
-  Dir.new(unpack_lib_dir).entries.find_all {|x| x =~ /\.jar/}
+  Dir.new(unpack_lib_dir).entries.find_all {|x| x =~ /\.jar/ && x !~ /neo4j-shell(.*)jar/ && x !~ /jline(.*)jar/ }
 end
 
 def system_unpack_lib_dir
