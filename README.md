@@ -5,7 +5,7 @@ This gem provides a set of jar files of the Neo4j Graph Database.
 
 To use it: `require 'neo4j-community'`
 
-It can be used directly but the intention is to use it with [neo4j.rb](https://github.com/andreasronge/neo4j).
+It does also include test jars (neo4j impermanent db), include with Neo4j::Community.load_test_jars!
 
 How to Release
 ==================================================

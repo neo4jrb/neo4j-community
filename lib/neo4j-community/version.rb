@@ -1,6 +1,6 @@
 module Neo4j
   module Community
-    VERSION     = "1.9.5"
-    NEO_VERSION = "1.9.5"
+    VERSION     = "2.0.0"
+    NEO_VERSION = "2.0.0"
   end
 end
