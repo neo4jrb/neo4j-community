@@ -29,5 +29,5 @@ License
 
 This gem is MIT licensed.
 
-However the jars included are licensed by [Neo4j](http://neo4j.orb).
+However the jars included are licensed by [Neo4j](http://neo4j.org).
 
