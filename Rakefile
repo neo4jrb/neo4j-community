@@ -55,24 +55,22 @@ def version
 end
 
 task :test_jar do
-  puts "DOWNLOAD TEST JAR #{version}"
   file = "neo4j-kernel-#{version}-tests.jar"
+  puts "DOWNLOAD TEST JAR #{file} from http://repo.typesafe.com"
   system "wget http://repo.typesafe.com/typesafe/repo/org/neo4j/neo4j-kernel/#{version}/#{file}"
   system "mv #{file} #{unpack_lib_dir}"
 end
 
 desc "Upgrade using downloaded ...tar.gz file in ./tmp"
-task :upgrade => [:delete_old_jar] do
+task :upgrade => [:delete_old_jar, :test_jar] do
 #  system "cd tmp; tar xf #{source_file}"
   jars = File.expand_path("./lib/neo4j-community/jars")
-  puts "Jar dir #{jars}"
   FileUtils.mkdir_p(jars)
   test_jars = File.expand_path("./lib/neo4j-community/test-jars")
-#  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
-#  system_jars.each {|f| system "cp #{system_unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
+  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
+  system_jars.each {|f| system "cp #{system_unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
 
-  puts "TEST JARS #{test_jars}"
   system "mkdir -p #{test_jars}"
 
-  jar_files_to_copy.each {|f| puts "HEJ #{f}"; system "cp #{unpack_lib_dir}/#{f} #{test_jars}; git add #{test_jars}/#{f}" if f =~ /tests/}
+  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{test_jars}; git add #{test_jars}/#{f}" if f =~ /tests/}
 end
