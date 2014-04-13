@@ -40,6 +40,16 @@ task :list do
   puts system_jars.inspect
 end
 
+
+desc "Download Neo4j Distro"
+task :download, :version  do |_, params|
+  version = params[:version]
+  download_site = "http://www.neo4j.org/download_thanks?edition=community&release=#{version}&platform=unix&packaging=zip&architecture=x32"
+
+#  system "open #{download_site}"
+  filename = "neo4j-community-#{version}-unix.tar.gz"
+  system "mv ~/Downloads/#{filename} ./tmp"
+end
  
 desc "Delete old Jar files"
 task :delete_old_jar do
