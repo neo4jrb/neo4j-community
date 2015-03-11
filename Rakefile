@@ -50,7 +50,7 @@ task :download, :version  do |_, params|
   filename = "neo4j-community-#{version}-unix.tar.gz"
   system "mv ~/Downloads/#{filename} ./tmp"
 end
- 
+
 desc "Delete old Jar files"
 task :delete_old_jar do
   root = File.expand_path("./lib/neo4j-community/jars")
@@ -67,7 +67,7 @@ end
 def download_test_jar
   file = "neo4j-kernel-#{version}-tests.jar"
   #puts "DOWNLOAD TEST JAR #{file} from http://repo.typesafe.com"
-  # neo4j-kernel-2.1.0-M01-tests.jar 
+  # neo4j-kernel-2.1.0-M01-tests.jar
   remote_file = "http://search.maven.org/remotecontent?filepath=org/neo4j/neo4j-kernel/#{version}/#{file}"
 
   puts "Download #{remote_file} to #{unpack_lib_dir}"
@@ -85,12 +85,12 @@ task :prod_jars do
   FileUtils.mkdir_p(jars)
   test_jars = File.expand_path("./lib/neo4j-community/test-jars")
 
-  download_test_jar  
+  download_test_jar
 
   jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
   system_jars.each {|f| system "cp #{system_unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
 
   system "mkdir -p #{test_jars}"
-  
+
   jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{test_jars}; git add #{test_jars}/#{f}" if f =~ /tests/}
 end
