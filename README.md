@@ -21,7 +21,7 @@ How to Release
 9. rake build
 
 There should now be a gem file available in the pkg folder.
-  gem install pkg/neo4j-community-VERSION-java.gem  
+  gem install pkg/neo4j-community-VERSION-java.gem
 
 
 License

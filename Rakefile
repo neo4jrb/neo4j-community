@@ -44,7 +44,8 @@ end
 desc "Download Neo4j Distro"
 task :download, :version  do |_, params|
   version = params[:version]
-  download_site = "http://www.neo4j.org/download_thanks?edition=community&release=#{version}&platform=unix&packaging=zip&architecture=x32"
+  # download_site = "http://www.neo4j.org/download_thanks?edition=community&release=#{version}&platform=unix&packaging=zip&architecture=x32"
+  download_site = "http://neo4j.com/artifact.php?name=neo4j-community-#{version}-unix.tar.gz"
 
 #  system "open #{download_site}"
   filename = "neo4j-community-#{version}-unix.tar.gz"
