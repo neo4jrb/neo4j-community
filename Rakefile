@@ -88,10 +88,24 @@ task :prod_jars do
 
   download_test_jar
 
-  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
-  system_jars.each {|f| system "cp #{system_unpack_lib_dir}/#{f} #{jars}; git add #{jars}/#{f}" unless f =~ /tests/}
+  test_jar_files_to_copy, non_test_jar_files_to_copy = jar_files_to_copy.partition {|f| f =~ /tests/ }
+
+  non_test_jar_files_to_copy.each do |f|
+    system "cp #{unpack_lib_dir}/#{f} #{jars}"
+    system "git add #{jars}/#{f}"
+  end
+  system_jars.each do |f|
+    unless f =~ /tests/
+      system "cp #{system_unpack_lib_dir}/#{f} #{jars}" 
+      system "git add #{jars}/#{f}" 
+    end
+  end
 
   system "mkdir -p #{test_jars}"
 
-  jar_files_to_copy.each {|f| system "cp #{unpack_lib_dir}/#{f} #{test_jars}; git add #{test_jars}/#{f}" if f =~ /tests/}
+  puts 'test_jar_files_to_copy', test_jar_files_to_copy.inspect
+  test_jar_files_to_copy.each do |f|
+    system "cp #{unpack_lib_dir}/#{f} #{test_jars}"
+    system "git add #{test_jars}/#{f}"
+  end
 end
