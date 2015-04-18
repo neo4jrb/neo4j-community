@@ -5,9 +5,9 @@ require "neo4j-community/version"
 Gem::Specification.new do |s|
   s.name        = "neo4j-community"
   s.version     = Neo4j::Community::VERSION
-  s.authors     = ["Dmytrii Nagirniak", "Andreas Ronge"]
-  s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com"]
-  s.homepage    = "https://github.com/dnagir/neo4j-community"
+  s.authors     = ["Dmytrii Nagirniak", "Andreas Ronge", "Volker Pacher"]
+  s.email       = ["dnagir@gmail.com", "andreas.ronge@gmail.com", "volker.pacher@gmail.com"]
+  s.homepage    = "https://github.com/neo4jrb/neo4j-community"
   s.summary     = "The neo4j Community edition v#{Neo4j::Community::NEO_VERSION} JAR files"
   s.description = "The Java Jar files for the Neo4j Community, a high performance, fully ACID transactional graph database – licensed under the GPL, see license - http://neo4j.org/licensing-guide/ "
 
@@ -23,5 +23,4 @@ Gem::Specification.new do |s|
   # specify any dependencies here; for example:
   s.add_development_dependency "rake"
   s.add_development_dependency "jeweler"
-  # s.add_runtime_dependency "rest-client"
 end
